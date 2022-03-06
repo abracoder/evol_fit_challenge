@@ -24,6 +24,7 @@ router.route('/add').post((req, res) => {
   const DOB=Date.parse(req.body.DOB);
   const phone=Number(req.body.phone);
   const trainerRef=req.body.trainerRef;
+  const sessions=req.body.sessions;
 
 
   const newUser = new User({
@@ -32,7 +33,8 @@ router.route('/add').post((req, res) => {
     gender,
     DOB,
     phone,
-    trainerRef
+    trainerRef,
+    sessions
   });
 
   newUser.save()

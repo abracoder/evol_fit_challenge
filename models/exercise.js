@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
-const exerciseInfoSchema = require("./exerciseInfo.js");
 const Schema = mongoose.Schema;
+
+const exerciseInfoSchema = require("./exerciseInfo.js");
 const exerciseSetSchema = require("./exerciseSet.js");
+
+
 
 const exerciseSchema = new Schema({
   exerciseInfoRef: {

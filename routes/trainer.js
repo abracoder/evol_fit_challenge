@@ -49,19 +49,19 @@ Trainer.findByIdAndDelete(req.params.id)
 .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/update/:id').post((req, res) => {
-Trainer.findById(req.params.id)
-.then(trainer => {
-    trainer.username = req.body.username;
-    trainer.description = req.body.description;
-    trainer.duration = Number(req.body.duration);
-    trainer.date = Date.parse(req.body.date);
+// router.route('/update/:id').post((req, res) => {
+// Trainer.findById(req.params.id)
+// .then(trainer => {
+//     trainer.username = req.body.username;
+//     trainer.description = req.body.description;
+//     trainer.duration = Number(req.body.duration);
+//     trainer.date = Date.parse(req.body.date);
 
-    trainer.save()
-    .then(() => res.json('Trainer updated!'))
-    .catch(err => res.status(400).json('Error: ' + err));
-})
-.catch(err => res.status(400).json('Error: ' + err));
-});
+//     trainer.save()
+//     .then(() => res.json('Trainer updated!'))
+//     .catch(err => res.status(400).json('Error: ' + err));
+// })
+// .catch(err => res.status(400).json('Error: ' + err));
+// });
 
 module.exports = router;
