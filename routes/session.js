@@ -49,5 +49,35 @@ router.route('/update/:id').patch((req, res) => {
     });
 
 
+router.route('/updatedate').patch(async(req,res)=>{
+    try{
+        let session=await Session.find({date:{$gte:req.body.date}});
+        for (let i = 0; i < session.length; i++) {
+            console.log(session[i].isCompleted);
+            // console.log(session[i].date.getUTCDate())
+            if(session[i].isCompleted==false){
+                session[i].date=new Date(session[i].date.setUTCDate(session[i].date.getUTCDate()+1));
+                console.log(session[i].date)
+
+            }
+            // console.log(session[i].date.setUTCDate(session[i].date.getUTCDate()+1))
+
+        }
+
+        const updatedSesssion = await session.save();
+        console.log(updatedSesssion);
+        res.status(201).json(updatedSesssion);
+
+
+
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+
+
+
+})
 
 module.exports = router;
