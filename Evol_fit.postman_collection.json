@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "1dd6b533-b55f-4386-80f3-770d049ca478",
+		"name": "Evol_fit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"suraj\",\r\n    \"email\":\"suraj123@gmail.com\",\r\n    \"gender\":\"M\",\r\n    \"DOB\":\"1999-06-02\",\r\n    \"phone\":\"9234432534\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch user",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "fetch trainer",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create trainers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Harsh123\",\r\n    \"email\":\"harsh1223@gmail.com\",\r\n    \"userRefs\":\"62238a58ad6e3d399609df7a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/trainers/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"trainers",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create sessions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"workout\":{\r\n        \"name\":\"workout1\",\r\n        \"exercises\":[{\r\n            \"excerciseInfoRef\":\"622462a9a84997efd214ceac\",\r\n            \"excerciseInfo\":{\r\n                \"name\":\"pushup\"\r\n            },\r\n            \"name\":\"pushup\",\r\n            \"excerciseSets\":{\r\n                \"number\":1,\r\n                \"suggestedWeight\":40,\r\n                \"suggestedReps\":10\r\n            }},{\r\n            \"excerciseInfoRef\":\"622462a9a84997efd214cead\",\r\n            \"excerciseInfo\":{\r\n                \"name\":\"squat\"\r\n            },\r\n            \"name\":\"squat\",\r\n            \"excerciseSets\":{\r\n                \"number\":1,\r\n                \"suggestedWeight\":30,\r\n                \"suggestedReps\":20\r\n            }\r\n\r\n        }]\r\n    },\r\n    \"date\":\"2019-09-02\",\r\n    \"userRef\":\"62239b3211057fe94fa2e5de\",\r\n    \"trainerRef\":\"622394b3109e2cadf672fd6f\",\r\n    \"isCompleted\":false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/sessions/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch sessions",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "fetch exerciseinfo",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create exerciseinfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"situp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/exerciseinfo/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"exerciseinfo",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update sessions",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/sessions/update/6224cd7b208f7fb64a516a2f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"update",
+						"6224cd7b208f7fb64a516a2f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "session date update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\":\"2022-03-09\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/sessions/updatedate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"sessions",
+						"updatedate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

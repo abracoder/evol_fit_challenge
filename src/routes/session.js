@@ -11,12 +11,6 @@ router.route('/').get(async(req,res)=>{
         res.status(500).json({ message: err.message })
 
     }
-    // Session.find()
-    // .populate('userRef')
-    // .populate('trainerRef')
-    // .then(sessions => res.json(sessions))
-    // .catch(err => res.status(400).json('Error: ' + err));
-
 })
 router.route('/add').post(async(req, res) => {
 
@@ -61,17 +55,7 @@ router.route('/update/:id').patch(async(req, res) => {
     catch(err){
         res.status(400).json({ message: err.message })
     }
-    // Session.findById(req.params.id)
-    // .then(session => {
 
-
-
-
-    //     session.save()
-    //     .then(() => res.json('session  updated!'))
-    //     .catch(err => res.status(400).json('Error: ' + err));
-    // })
-    // .catch(err => res.status(400).json('Error: ' + err));
     });
 
 
