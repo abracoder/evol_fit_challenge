@@ -2,15 +2,19 @@ const router = require('express').Router();
 let Trainer = require('../models/trainer');
 let User = require('../models/user');
 
-router.route('/').get((req, res) => {
-  User.find()
-    .populate('trainerRef')
-    .then(users => res.json(users))
-    .catch(err => res.status(400).json('Error: ' + err));
+router.route('/').get(async(req, res) => {
+  try{
+    const user=await User.find();
+    res.json(user)
+  }
+  catch(err){
+    res.status(500).json({ message: err.message })
+  }
+
 });
 
-router.route('/add').post((req, res) => {
-  Trainer.findById(req.body.trainerRef)
+router.route('/add').post(async(req, res) => {
+  await Trainer.findById(req.body.trainerRef)
     .then(trainer => {
         if (!trainer) {
         return res.status(404).json({
@@ -27,7 +31,7 @@ router.route('/add').post((req, res) => {
   const sessions=req.body.sessions;
 
 
-  const newUser = new User({
+  const user = new User({
     email,
     name,
     gender,
@@ -36,10 +40,14 @@ router.route('/add').post((req, res) => {
     trainerRef,
     sessions
   });
+  try{
+    let newUser = await user.save();
+    res.json(newUser);
 
-  newUser.save()
-    .then(() => res.json('User added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+  }catch(err){
+    res.status(400).json({ message: err.message })
+  }
+
 });
 
 module.exports = router;
