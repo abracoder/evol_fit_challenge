@@ -31,7 +31,7 @@ router.route('/add').post(async(req, res) => {
     });
     try{
         let newSession=await session.save();
-        res.json(newSession);
+        res.status(201).json(newSession);
 
     }catch(err){
         res.status(400).json({ message: err.message })
@@ -49,7 +49,7 @@ router.route('/update/:id').patch(async(req, res) => {
         session.workout.exercises[0].exerciseSets[0].performedReps=req.body.performedReps
 
         const updatedSession=await session.save()
-        res.json(updatedSession);
+        res.status(201).json(updatedSession);
 
     }
     catch(err){
@@ -63,16 +63,20 @@ router.route('/updatedate').patch(async(req,res)=>{
     try{
 
         let session=await Session.find({date:{$gte:req.body.date}});
+
         for (let i = 0; i < session.length; i++) {
             console.log(session[i].isCompleted);
             if(session[i].isCompleted==false){
                 id=session[i]._id
-                Session.where({ _id: id }).update({ date: new Date(session[i].date.setUTCDate(session[i].date.getUTCDate()+1))})
+                 await Session.where({ _id: id }).update({ date: new Date(session[i].date.setUTCDate(session[i].date.getUTCDate()+1))})
                 // session[i].date=new Date(session[i].date.setUTCDate(session[i].date.getUTCDate()+1));
                 // console.log(session[i].date)
+                // Session.save();
 
             }
         }
+        session=await Session.find({date:{$gte:req.body.date}});
+        // session.save()
 
         res.status(201).json(session);
     }

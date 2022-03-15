@@ -42,7 +42,7 @@ router.route('/add').post(async(req, res) => {
   });
   try{
     let newUser = await user.save();
-    res.json(newUser);
+    res.status(201).json(newUser);
 
   }catch(err){
     res.status(400).json({ message: err.message })

@@ -16,6 +16,7 @@ router.route('/').get(async(req, res) => {
 router.route('/add').post(async(req, res) => {
     const name = req.body.name;
     const email = req.body.email;
+
     const userRefs=req.body.userRefs;
 
     const trainer = new Trainer({
